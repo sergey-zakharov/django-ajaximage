@@ -84,8 +84,9 @@
     }
 
     var upload = function(e) {
-        var el      = e.target.parentElement,
-            file    = el.querySelector('.file-input').files[0],
+        var el      = e.target.parentElement.parentElement,         //changed
+            el1=e.target.parentElement,                             //changed
+            file    = el1.querySelector('.file-input').files[0],
             dest    = el.querySelector('.file-dest').value,
             form    = new FormData(),
             headers = {'X-CSRFToken': getCookie('csrftoken')},
@@ -121,7 +122,7 @@
     var removeUpload = function(e) {
         e.preventDefault()
 
-        var el = e.target.parentElement
+        var el = e.target.parentElement.parentElement // changed
         el.querySelector('.file-path').value = ''
         el.querySelector('.file-input').value = ''
         el.className = 'ajaximage form-active'
